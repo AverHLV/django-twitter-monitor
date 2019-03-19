@@ -7,7 +7,7 @@ Django + Scrapy project for monitoring tweets from specified Twitter accounts fo
 ## Tasks
 Backend tasks powered by celery and django-celery-beat scheduler.
 
-##Usage
+## Usage
 Spider can be executed from celery-beat as periodic task or manually by command:
 ```
 python manage.py crawl
