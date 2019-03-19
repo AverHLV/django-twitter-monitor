@@ -8,12 +8,12 @@ from utils import secret_dict
 from .items import TweetItem
 
 
-def run_spider(accounts, keywords=constants.keywords):
+def run_spider(accounts, keywords):
     """
     Run TweetSpider as new process
 
-    :param accounts: TWAccount model objects
-    :param keywords: tuple of strings for searching in tweets
+    :param accounts: TWAccount model queryset
+    :param keywords: Keyword model queryset
     """
 
     process = CrawlerProcess(constants.spider_settings)
@@ -34,7 +34,7 @@ class TweetSpider(Spider):
         TweetSpider initialization
 
         :param accounts: TWAccount model queryset
-        :param keywords: tuple of strings for searching in tweets
+        :param keywords: Keyword model queryset
         :param tweet_min_length: minimum possible tweet length
         """
 
@@ -110,5 +110,5 @@ class TweetSpider(Spider):
 
     def search_for_keywords(self, text):
         for keyword in self.keywords:
-            if search(keyword, text) is not None:
+            if search(keyword.keyword, text) is not None:
                 return keyword

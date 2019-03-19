@@ -24,11 +24,28 @@ class TWAccount(models.Model):
         return self.name
 
 
+class Keyword(models.Model):
+    """ Search word model """
+
+    keyword = models.CharField(max_length=constants.tweet_keyword_max_length, unique=True)
+    objects = models.Manager()
+
+    class Meta:
+        db_table = 'keywords'
+
+    def __str__(self):
+        return self.keyword
+
+    def save(self, *args, **kwargs):
+        self.keyword = self.keyword.lower()
+        return super().save(*args, **kwargs)
+
+
 class Tweet(TimeStamped):
     """ Twitter message model """
 
     text = models.TextField(unique=True)
-    keyword = models.CharField(max_length=constants.tweet_keyword_max_length)
+    keyword = models.ForeignKey(Keyword, on_delete=models.CASCADE)
     account = models.ForeignKey(TWAccount, on_delete=models.CASCADE)
     objects = models.Manager()
 

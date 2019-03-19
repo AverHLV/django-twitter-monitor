@@ -9,8 +9,6 @@ tweet_preview_length = 40
 tweet_keyword_max_length = 30
 tweet_min_length = 15
 
-keywords = 'secret government', 'combat'
-
 spider_settings = {
     'ROBOTSTXT_OBEY': True,
     'LOG_FILE': 'spider.log',

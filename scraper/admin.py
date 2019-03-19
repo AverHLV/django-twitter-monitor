@@ -1,13 +1,19 @@
 from django.contrib import admin
 from django.core.exceptions import ObjectDoesNotExist
 from config import constants
-from .models import TWAccount, Tweet
+from .models import TWAccount, Keyword, Tweet
 
 
 @admin.register(TWAccount)
 class TWAccountAdmin(admin.ModelAdmin):
     ordering = 'name',
     search_fields = 'name',
+
+
+@admin.register(Keyword)
+class KeywordAdmin(admin.ModelAdmin):
+    ordering = 'keyword',
+    search_fields = 'keyword',
 
 
 @admin.register(Tweet)
