@@ -91,7 +91,7 @@ class TweetSpider(Spider):
     def clear_text(self, text):
         """ Clear text form non-cyrillic, non-latin and non-digit symbols except spaces """
 
-        text = sub(r'[^a-zа-я0-9 ]', '', text.lower())
+        text = sub(r'[^a-zа-я0-9іїй ]', '', text.lower())
         text = sub(r' {2,}', ' ', text)
 
         if len(text) < self.tweet_min_length:
