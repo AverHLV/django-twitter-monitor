@@ -9,7 +9,7 @@ Before adding a keyword, you can perform stemming (highlighting the stem of the 
 Ukrainian, Russian and English are supported. Stemming can be omitted if the word is an abbreviation or proper name.
 
 Implemented login to the given Twitter account and further search in the texts of the latest tweets added
-to the account with the help of the so-called "spider" (scrapy.Spider).
+to the accounts with the help of the so-called "spider" (scrapy.Spider).
 
 ## Apps
 * scraper: main app, implements necessary models and Scrapy spider.
