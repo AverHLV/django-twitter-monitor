@@ -1,5 +1,15 @@
 # Django Twitter monitor
 Django + Scrapy project for monitoring tweets from specified Twitter accounts for specific keywords.
+The developed monitoring system searches the keywords in the tweets of the specified Twitter accounts with a certain
+periodicity, for example, 60 minutes.
+
+Accounts, keywords and tweets are Django models. Interaction with them occurs through the admin panel of Django.
+
+Before adding a keyword, you can perform stemming (highlighting the stem of the word),
+Ukrainian, Russian and English are supported. Stemming can be omitted if the word is an abbreviation or proper name.
+
+Implemented login to the given Twitter account and further search in the texts of the latest tweets added
+to the account with the help of the so-called "spider" (scrapy.Spider).
 
 ## Apps
 * scraper: main app, implements necessary models and Scrapy spider.
@@ -12,30 +22,3 @@ Spider can be executed from celery-beat as periodic task or manually by command:
 ```
 python manage.py crawl
 ```
-
-# Lab3 - Моніторинг постів в соціальних мережах
-Розроблена система моніторингу здійснює пошук ключових слів у текстах твітів вказаних Twitter-акаунтів із деякою періодичністю, наприклад 60 хвилин.
-
-Акаунти, ключові слова та знайдені твіти являють собою моделі Django. Взаємодія з ними відбувається через адмін-панель Django.
-
-Перед доданням ключового слова можна провести стемінг (виділення основи слова), підтримуються українська, російська та англійська мови.
-Стемінг можна не проводити, якщо слово є абревіатурою, скороченням або власною назвою.
-
-Реалізовано вхід в заданий Twitter-акаунт та подальший пошук в текстах найновіших твітів доданих в бд акаунтів за допомогою
-так званого "павука" (scrapy.Spider).
-
-При тестовому запуску здійснювався пошук по словах:
-
-![Alter text](img/keywords.png)
-
-В текстах твітів наступних акаунтів:
-
-![Alter text](img/accounts.png)
-
-Знайдені твіти:
-
-![Alter text](img/tweets.png)
-
-Кожен збережений твіт містить дату створення, акаунт на якому він був знайдений та ключове слово:
-
-![Alter text](img/tweet.png)
