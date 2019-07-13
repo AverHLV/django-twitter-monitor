@@ -17,7 +17,6 @@ class TWAccount(models.Model):
     """ Twitter account model """
 
     name = models.CharField(max_length=constants.account_name_max_length, unique=True)
-    objects = models.Manager()
 
     class Meta:
         db_table = 'accounts'
@@ -32,7 +31,6 @@ class Keyword(models.Model):
     keyword = models.CharField(max_length=constants.tweet_keyword_max_length, unique=True)
     language = models.CharField(max_length=2,
                                 choices=(('ru', 'Russian'), ('uk', 'Ukrainian'), ('en', 'English'), ('no', 'Not stem')))
-    objects = models.Manager()
 
     class Meta:
         db_table = 'keywords'
@@ -70,7 +68,6 @@ class Tweet(TimeStamped):
     text = models.TextField(unique=True)
     keyword = models.ForeignKey(Keyword, on_delete=models.CASCADE)
     account = models.ForeignKey(TWAccount, on_delete=models.CASCADE)
-    objects = models.Manager()
 
     class Meta:
         db_table = 'tweets'
